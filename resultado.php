@@ -54,27 +54,26 @@
                   </div>
                   <!--Card-->
                   <div class="row">
-                      <div class="col">
-                        <div class="card">
-                            <div class="card-header">
-                              <?php 
-                              for($i=0 ; $i<sizeof($results) ; $i++){
-                                echo $results[$i]['title'];
-                               ?>
-                                <hr>
-                              <?php } ?>
-                             
-                            </div>
-                            <img src="img/aqua.png" alt="">
+                  <?php 
+                    for($i=0 ; $i<sizeof($results) ; $i++){
+                         $titulo = $results[$i]['title'];
+                         $imagen = $results[$i]['image_url'];
+                  ?>
+                      <div class="col-6 mb-3">
+                        <div class="card h-100">
+                            <img src="<?php print $imagen; ?>" style="height: 190px;" alt="">
                             <div class="card-body">
                               <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                                <p>
+                                   <?php print $titulo; ?> 
+                                </p>
                               </blockquote>
                             </div>
                           </div>
                       </div>
+                      <?php } ?>
                   </div>
+                  
                   <!--Card--> 
     </div>
     <!--******Aquí termina el código******-->
