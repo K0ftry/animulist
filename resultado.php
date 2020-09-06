@@ -13,6 +13,14 @@
   </head>
   <body>
     <!--******Aquí inicia el código******-->
+    <?php
+        $nombre_anime = $_POST['nombre_anime'];
+        $json = file_get_contents("https://api.jikan.moe/v3/search/anime?q=$nombre_anime");
+        
+        $array = json_decode($json, true);
+        $results = $array['results'];
+    ?>
+
     <div class="container">
          <!--Inicia el navbar-->
         <div class="row">
@@ -28,7 +36,7 @@
                           <a class="nav-link" href="login.html"><i class="far fa-user"> Iniciar Sesión</i> <span class="sr-only">(current)</span></a>
                         </li>
                         <li>
-                          <form action="resultado.php" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
+                          <form action="#" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
                             <input name="nombre_anime" class="form-control mr-sm-2" type="search" placeholder="Buscar anime" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                           </form>
@@ -49,7 +57,13 @@
                       <div class="col">
                         <div class="card">
                             <div class="card-header">
-                              User
+                              <?php 
+                              for($i=0 ; $i<sizeof($results) ; $i++){
+                                echo $results[$i]['title'];
+                               ?>
+                                <hr>
+                              <?php } ?>
+                             
                             </div>
                             <img src="img/aqua.png" alt="">
                             <div class="card-body">
