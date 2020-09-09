@@ -68,13 +68,51 @@
                                    <?php print $titulo; ?> 
                                 </p>
                               </blockquote>
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Añadir</button>
                             </div>
                           </div>
                       </div>
                       <?php } ?>
                   </div>
-                  
                   <!--Card--> 
+                  <!--Modal-->
+                  <div class="row">
+                      <div class="col">
+                      <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Añadir a lista</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--Radios-->
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="radio_pendiente" name="radio" class="custom-control-input" value="pendiente">
+                                        <label class="custom-control-label" for="customRadioInline1">Pendiente</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="radio_viendo" name="radio" class="custom-control-input" value="viendo">
+                                        <label class="custom-control-label" for="customRadioInline2">Viendo</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="radio_visto" name="radio" class="custom-control-input" value="visto">
+                                        <label class="custom-control-label" for="customRadioInline2">Visto</label>
+                                        </div>
+                                    <!--Radios-->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                      </div>
+                  </div>
+                  <!--Modal-->
     </div>
     <!--******Aquí termina el código******-->
     <!-- Optional JavaScript -->

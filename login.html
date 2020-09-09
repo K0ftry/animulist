@@ -44,14 +44,14 @@
              <div class="col">
                  <div class="card">
                    <div class="card-body">
-                    <form>
+                    <form action="login.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Tu Correo</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="otaku@anime.com" required>
+                          <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="otaku@anime.com" required>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="***********" required>
+                          <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="***********" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Link Start</button>
                       </form>
