@@ -11,7 +11,7 @@ $resultado = $sentencia->get_result();
 if ($fila = $resultado->fetch_assoc()) {
     session_start(); 
     $_SESSION['correo'] = $usu_email; 
-    header('Location: dashboard.php');  
+    header('Location: dashboard.html');  
 }else{
   print 'Error al iniciar sesión';
 }

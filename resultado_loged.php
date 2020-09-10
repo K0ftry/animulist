@@ -64,8 +64,9 @@
                             <img src="<?php print $imagen; ?>" style="height: 190px;" alt="">
                             <div class="card-body">
                               <blockquote class="blockquote mb-0">
-                                <p>
-                                   <?php print $titulo; ?> 
+                                <p id="titulo_id">
+                                   <?php print $titulo; ?>
+                                   
                                 </p>
                               </blockquote>
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Añadir</button>
@@ -80,7 +81,9 @@
                       <div class="col">
                       <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
+
                                 <div class="modal-content">
+                                <form action="registrar_a_lista.php" method="POST" enctype="multipart/form-data">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Añadir a lista</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -89,25 +92,34 @@
                                 </div>
                                 <div class="modal-body">
                                     <!--Radios-->
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="radio_pendiente" name="radio" class="custom-control-input" value="pendiente">
-                                        <label class="custom-control-label" for="customRadioInline1">Pendiente</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="radio_viendo" name="radio" class="custom-control-input" value="viendo">
-                                        <label class="custom-control-label" for="customRadioInline2">Viendo</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="radio_visto" name="radio" class="custom-control-input" value="visto">
-                                        <label class="custom-control-label" for="customRadioInline2">Visto</label>
-                                        </div>
+                                    
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                      <input type="radio" id="customRadioInline1" name="radio" class="custom-control-input" value="1">
+                                      <label class="custom-control-label" for="customRadioInline1">Pendiente</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                      <input type="radio" id="customRadioInline2" name="radio" class="custom-control-input" value="2">
+                                      <label class="custom-control-label" for="customRadioInline2">Viendo</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                      <input type="radio" id="customRadioInline3" name="radio" class="custom-control-input" value="3">
+                                      <label class="custom-control-label" for="customRadioInline3">Visto</label>
+                                    </div>
+            
+                                    <script> var titulo_actual = document.getElementById("titulo_id").innerHTML;</script>
+                                    <p><script>document.write(titulo_actual)</script></p>
+                                    <script>document.getElementById("titulo_actual_id").value = titulo_actual;</script>
+                                    <input id="titulo_actual_id" type="hidden" name="titulo" value="">
+                                    
                                     <!--Radios-->
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                 </div>
+                                </form>
                                 </div>
+
                             </div>
                             </div>
                       </div>
