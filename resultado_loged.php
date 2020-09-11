@@ -57,78 +57,56 @@
                   <?php 
                     for($i=0 ; $i<sizeof($results) ; $i++){
                          $titulo = $results[$i]['title'];
+                         $array_titulos = array($i => $titulo);
                          $imagen = $results[$i]['image_url'];
                   ?>
                       <div class="col-6 mb-3">
                         <div class="card h-100">
                             <img src="<?php print $imagen; ?>" style="height: 190px;" alt="">
-                            <div class="card-body">
+
+                            <div class="card-body p-1">
+                              <form action="registrar_a_lista.php" method="POST" enctype="multipart/form-data">
                               <blockquote class="blockquote mb-0">
-                                <p id="titulo_id">
-                                   <?php print $titulo; ?>
-                                   
+                                <p class="p-0 m-0" id="<?php print $i; ?>">
+                                   <?php print $titulo; ?>  
                                 </p>
+                                <input type="hidden" value="<?php print $titulo ?>" name="title">
                               </blockquote>
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Añadir</button>
+                              <!-- Example single danger button -->
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Lista
+                                  </button>
+                                  <div class="dropdown-menu">
+                                    <ul>
+                                      <li class="mb-1"> <button name="submit" value="1" type="submit" class="btn btn-outline-danger btn-sm">Pendiente</button></li>
+                                      <li class="mb-1"> <button name="submit" value="2" type="submit" class="btn btn-outline-warning btn-sm">Viendo</button></li>
+                                      <li class="mb-1"> <button name="submit" value="3" type="submit" class="btn btn-outline-success btn-sm">Visto</button></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                                </form>
                             </div>
+
                           </div>
                       </div>
                       <?php } ?>
                   </div>
                   <!--Card--> 
-                  <!--Modal-->
-                  <div class="row">
-                      <div class="col">
-                      <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-
-                                <div class="modal-content">
-                                <form action="registrar_a_lista.php" method="POST" enctype="multipart/form-data">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Añadir a lista</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <!--Radios-->
-                                    
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                      <input type="radio" id="customRadioInline1" name="radio" class="custom-control-input" value="1">
-                                      <label class="custom-control-label" for="customRadioInline1">Pendiente</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                      <input type="radio" id="customRadioInline2" name="radio" class="custom-control-input" value="2">
-                                      <label class="custom-control-label" for="customRadioInline2">Viendo</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                      <input type="radio" id="customRadioInline3" name="radio" class="custom-control-input" value="3">
-                                      <label class="custom-control-label" for="customRadioInline3">Visto</label>
-                                    </div>
-            
-                                    <script> var titulo_actual = document.getElementById("titulo_id").innerHTML;</script>
-                                    <p><script>document.write(titulo_actual)</script></p>
-                                    <script>document.getElementById("titulo_actual_id").value = titulo_actual;</script>
-                                    <input id="titulo_actual_id" type="hidden" name="titulo" value="">
-                                    
-                                    <!--Radios-->
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                                </div>
-                                </form>
-                                </div>
-
-                            </div>
-                            </div>
-                      </div>
-                  </div>
-                  <!--Modal-->
+                 
+                  
     </div>
     <!--******Aquí termina el código******-->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script>
+      function obtener_titulo(){
+        var p = document.getElementById("p_oculto").innerHTML;
+        //var titulo =  document.getElementById("titulo_id").innerHTML;
+        document.getElementById("mostrar").innerHTML = titulo;
+      }
+    </script> -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

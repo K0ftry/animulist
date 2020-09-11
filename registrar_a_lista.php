@@ -1,6 +1,6 @@
 <?php
 
-$radio = $_POST['radio'];
-$titulo = $_POST['titulo'];
-print $radio;
+$estado = $_POST['submit'];
+$titulo = $_POST['title'];
+print $estado;
 print $titulo;
