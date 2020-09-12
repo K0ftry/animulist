@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
+    header('Location: login.php');
+?>
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -25,7 +32,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                       <ul class="navbar-nav">
                         <li class="nav-item active"> 
-                          <a class="nav-link" href="login.html"><i class="far fa-user"> Iniciar Sesión</i> <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?> <span class="sr-only">(current)</span></a>
                         </li>
                         <li>
                           <form action="resultado_loged.php" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
@@ -59,7 +66,43 @@
                           
                               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                  <!--table-->
+                                  <table class="table table-striped table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Acción</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <?php
+                                        include('lista.php');
+                                        
+                                      ?>
+                                      <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <!--table-->
+
                                 </div>
                               </div>
                             </div>

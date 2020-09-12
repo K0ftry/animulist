@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if(isset($_SESSION['usuario_info']) OR !empty($_SESSION['usuario_info']))
+    header('Location: dashboard.php');
+?>
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -33,7 +40,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                       <ul class="navbar-nav">
                         <li class="nav-item active"> 
-                          <a class="nav-link" href="login.html"><i class="far fa-user"> Iniciar Sesión</i> <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="#"><i class="far fa-user"> Iniciar Sesión</i> <span class="sr-only">(current)</span></a>
                         </li>
                         <li>
                           <form action="#" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">

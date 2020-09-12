@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
+    header('Location: login.php');
+?>
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -33,7 +40,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                       <ul class="navbar-nav">
                         <li class="nav-item active"> 
-                          <a class="nav-link" href="login.html"><i class="far fa-user"> Iniciar Sesión</i> <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
                         </li>
                         <li>
                           <form action="#" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
@@ -57,7 +64,7 @@
                   <?php 
                     for($i=0 ; $i<sizeof($results) ; $i++){
                          $titulo = $results[$i]['title'];
-                         $array_titulos = array($i => $titulo);
+                         //$array_titulos = array($i => $titulo);
                          $imagen = $results[$i]['image_url'];
                   ?>
                       <div class="col-6 mb-3">
@@ -71,6 +78,7 @@
                                    <?php print $titulo; ?>  
                                 </p>
                                 <input type="hidden" value="<?php print $titulo ?>" name="title">
+                                <input type="hidden" value="<?php print $imagen ?>" name="imagen">
                               </blockquote>
                               <!-- Example single danger button -->
                                 <div class="btn-group">
