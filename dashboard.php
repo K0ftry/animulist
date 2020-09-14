@@ -69,7 +69,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                               </div>
                           
                               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
+                                <div class="card-body" style="padding-bottom: 100px;">
                                   <!--table-->
                                   <table class="table table-striped table-dark">
                                     <thead>
@@ -105,21 +105,20 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                             $item1 = $fila1[$x1];
                                       ?>
                                       <tr>
-                                        <th scope="row"><?php print $c1 ?></th>
-                                        <td>Mark</td>
-                                        <td><?php print $item1[0] ?></td>
-                                        <td>
+                                        <th class="p-0" scope="row"><?php print $c1 ?></th>
+                                        <td class="p-0">Mark</td>
+                                        <td class="p-0"><?php print $item1[0] ?></td>
+                                        <td class="p-0">
                                         <form action="acciones.php" method="POST" enctype="multipart/form-data">
                                         <div class="btn-group">
-                                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Acciones
                                           </button>
                                           <div class="dropdown-menu">
                                             <ul>
-                                              <li class="mb-1"> <button name="submit" value="1" type="submit" class="btn btn-outline-danger btn-sm">Pendiente</button></li>
                                               <li class="mb-1"> <button name="submit" value="2" type="submit" class="btn btn-outline-warning btn-sm">Viendo</button></li>
                                               <li class="mb-1"> <button name="submit" value="3" type="submit" class="btn btn-outline-success btn-sm">Visto</button></li>
-                                              <li class="mb-1"> <button name="submit" value="3" type="submit" class="btn btn-outline-success btn-sm">Eliminar</button></li>
+                                              <li class="mb-1"> <button name="submit" value="4" type="submit" class="btn btn-dark btn-sm">Eliminar</button></li>
                                             </ul>
                                           </div>
                                         </div>
@@ -145,7 +144,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                               </div>
                             </div>
                             <div class="card">
-                              <div class="card-header" id="headingTwo">
+                              <div class="card-header" id="headingTwo" style="z-index: 0;">
                                 <h2 class="mb-0">
                                   <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Viendo actualmente
@@ -153,8 +152,79 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                 </h2>
                               </div>
                               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                
+                                <div class="card-body" style="padding-bottom: 100px;">
+                                  <!--table-->
+                                  <table class="table table-striped table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Acción</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <?php
+                                        include 'conexion.php';
+                                        $id = $_SESSION['usuario_info']['id'];
+                                        $id_lista2 = 2;
+
+                                        $sentencia2 = $conexion->prepare("SELECT nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
+                                        ORDER BY nombre_anime ASC");
+
+                                        $sentencia2->bind_param('ii',$id_lista2,$id);
+
+                                        $sentencia2->execute();
+
+                                        $resultado2 = $sentencia2->get_result();
+
+                                        $fila2 = $resultado2->fetch_all();
+                                        
+                                        $cantidad2 = sizeof($fila2);
+                                        if($cantidad2 > 0){
+                                          $c2=0;
+                                          for($x2 =0; $x2 < $cantidad2; $x2++){
+                                            $c2++;
+                                            $item2 = $fila2[$x2];
+                                      ?>
+                                      <tr>
+                                        <th class="p-0" scope="row"><?php print $c2 ?></th>
+                                        <td class="p-0">Mark</td>
+                                        <td class="p-0"><?php print $item2[0] ?></td>
+                                        <td class="p-0">
+                                        <form action="acciones.php" method="POST" enctype="multipart/form-data">
+                                        <div class="btn-group">
+                                          <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Acciones
+                                          </button>
+                                          <div class="dropdown-menu">
+                                            <ul>
+                                            <li class="mb-1"> <button name="submit" value="1" type="submit" class="btn btn-outline-danger btn-sm">Pendiente</button></li>
+                                              <li class="mb-1"> <button name="submit" value="3" type="submit" class="btn btn-outline-success btn-sm">Visto</button></li>
+                                              <li class="mb-1"> <button name="submit" value="4" type="submit" class="btn btn-dark btn-sm">Eliminar</button></li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        </form>
+                                        </td>
+                                      </tr>
+                                            <?php }}else{
+                                              ?>
+
+                                              <tr>
+                                                <td colspan="6">NO HAY REGISTROS</td>
+                                              </tr>
+                            
+                                                <?php }
+                                                $sentencia2->close();
+                                                $conexion->close();
+                                                ?>
+                                    </tbody>
+                                  </table>
+                                  <!--table-->
+
+                                
                                 </div>
                               </div>
                             </div>
@@ -167,8 +237,77 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                 </h2>
                               </div>
                               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              <div class="card-body" style="padding-bottom: 100px;">
+                                  <!--table-->
+                                  <table class="table table-striped table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Acción</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <?php
+                                        include 'conexion.php';
+                                        $id = $_SESSION['usuario_info']['id'];
+                                        $id_lista3 = 3;
+
+                                        $sentencia3 = $conexion->prepare("SELECT nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
+                                        ORDER BY nombre_anime ASC");
+
+                                        $sentencia3->bind_param('ii',$id_lista3,$id);
+
+                                        $sentencia3->execute();
+
+                                        $resultado3 = $sentencia3->get_result();
+
+                                        $fila3 = $resultado3->fetch_all();
+                                        
+                                        $cantidad3 = sizeof($fila3);
+                                        if($cantidad3 > 0){
+                                          $c3=0;
+                                          for($x3 =0; $x3 < $cantidad3; $x3++){
+                                            $c3++;
+                                            $item3 = $fila3[$x3];
+                                      ?>
+                                      <tr>
+                                        <th class="p-0" scope="row"><?php print $c3 ?></th>
+                                        <td class="p-0">Mark</td>
+                                        <td class="p-0"><?php print $item3[0] ?></td>
+                                        <td class="p-0">
+                                        <form action="acciones.php" method="POST" enctype="multipart/form-data">
+                                        <div class="btn-group">
+                                          <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Acciones
+                                          </button>
+                                          <div class="dropdown-menu">
+                                            <ul>
+                                            <li class="mb-1"> <button name="submit" value="1" type="submit" class="btn btn-outline-danger btn-sm">Pendiente</button></li>
+                                              <li class="mb-1"> <button name="submit" value="2" type="submit" class="btn btn-outline-warning btn-sm">Viendo</button></li>
+                                              <li class="mb-1"> <button name="submit" value="4" type="submit" class="btn btn-dark btn-sm">Eliminar</button></li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        </form>
+                                        </td>
+                                      </tr>
+                                            <?php }}else{
+                                              ?>
+
+                                              <tr>
+                                                <td colspan="6">NO HAY REGISTROS</td>
+                                              </tr>
+                            
+                                                <?php }
+                                                $sentencia3->close();
+                                                $conexion->close();
+                                                ?>
+                                    </tbody>
+                                  </table>
+                                  <!--table-->
+
                                 </div>
                               </div>
                             </div>
