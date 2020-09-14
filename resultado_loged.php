@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
-    header('Location: login.php');
+    header('Location: index.php');
 ?>
 
 <!doctype html>
@@ -41,6 +41,9 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                       <ul class="navbar-nav">
                         <li class="nav-item active"> 
                           <a class="nav-link" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li>
+                          <a class="btn btn-primary" href="lista.php">Mi lista</a>
                         </li>
                         <li>
                           <form action="#" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">

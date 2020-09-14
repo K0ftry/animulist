@@ -15,7 +15,7 @@ if ($fila = $resultado->fetch_assoc()) {
       'correo'=>$fila['correo'],
       'alias'=>$fila['alias']
   );
-    header('Location: dashboard.php');  
+    header('Location: home.php');  
 }else{
   print 'Error al iniciar sesión';
 }

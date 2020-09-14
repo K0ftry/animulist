@@ -5,7 +5,7 @@ include 'conexion.php';
 if(isset($_POST['submit'],$_POST['title'],$_POST['imagen']) and $_POST['submit']!="" and $_POST['title']!="" and $_POST['imagen']!=""){
     $lista_id = $_POST['submit'];
     $titulo = $_POST['title']; 
-    $id = $_SESSION['id'];
+    $id = $_SESSION['usuario_info']['id'];
     $imagen = $_POST['imagen'];  
 
     $consulta="insert into animes

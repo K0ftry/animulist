@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if(isset($_SESSION['usuario_info']) OR !empty($_SESSION['usuario_info']))
-    header('Location: dashboard.php');
+if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
+    header('Location: index.php');
 ?>
 
 <!doctype html>
@@ -21,7 +21,7 @@ if(isset($_SESSION['usuario_info']) OR !empty($_SESSION['usuario_info']))
   <body>
     <!--******Aquí inicia el código******-->
     <div class="container">
-        <!--Inicia el navbar-->
+         <!--Inicia el navbar-->
         <div class="row">
             <div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,50 +31,50 @@ if(isset($_SESSION['usuario_info']) OR !empty($_SESSION['usuario_info']))
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                       <ul class="navbar-nav">
-                        <li class="nav-item active">  
-                          <a class="nav-link" href="#"><i class="far fa-user"> Iniciar Sesión</i> <span class="sr-only">(current)</span></a>
+                        <li class="nav-item active"> 
+                          <a class="nav-link" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
                         </li>
                         <li>
-                          <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar anime" aria-label="Search">
+                          <a href="salir.php">Desconectar</a>
+                        </li>
+                        <li>
+                          <a class="btn btn-primary" href="lista.php">Mi lista</a>
+                        </li>
+                        <li>
+                          <form action="resultado_loged.php" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
+                            <input name="nombre_anime" class="form-control mr-sm-2" type="search" placeholder="Buscar anime" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                           </form>
                         </li>
                       </ul>
                     </div>
                   </nav>
-            </div>
-        </div>
-          <!--Termina el navbar-->
-        <!--Card-->
-         <div class="row">
-             <div class="col">
-                 <div class="card">
-                   <div class="card-body">
-                    <form action="login_web.php" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Tu Correo</label>
-                          <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="otaku@anime.com" required>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="***********" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Link Start</button>
-                      </form>
-                    </div>
-                  </div>
                 </div>
-           </div>
-        <!--Card-->
-        <!--Registrarse-->
-        <div class="row">
-            <div class="col">
-                <p class="text-center"><a href="">Olvidé mi contraseña</a></p>
-                <p class="text-center"><a href="register.html">Registrarme</a></p>
             </div>
-        </div>
-        <!--Registrarse-->
+                  <!--Termina el navbar-->
+                  <div class="row">
+                      <div class="col">
+                          <h2 class="text-center">Waifu del día</h2>
+                      </div>
+                  </div>
+                  <!--Card-->
+                  <div class="row">
+                      <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                              User
+                            </div>
+                            <img src="img/aqua.png" alt="">
+                            <div class="card-body">
+                              <blockquote class="blockquote mb-0">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                              </blockquote>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!--Card--> 
     </div>
     <!--******Aquí termina el código******-->
     <!-- Optional JavaScript -->

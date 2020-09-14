@@ -3,7 +3,8 @@ session_start();
 
 if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
     header('Location: login.php');
-?>
+ ?>
+
 
 <!doctype html>
 <html lang="es">
@@ -32,7 +33,10 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                       <ul class="navbar-nav">
                         <li class="nav-item active"> 
-                          <a class="nav-link" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?> <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li>
+                          <a href="salir.php">Desconectar</a>
                         </li>
                         <li>
                           <form action="resultado_loged.php" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
@@ -78,27 +82,61 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                     </thead>
                                     <tbody>
                                       <?php
-                                        include('lista.php');
+                                        include 'conexion.php';
+                                        $id = $_SESSION['usuario_info']['id'];
+                                        $id_lista1 = 1;
+
+                                        $sentencia1 = $conexion->prepare("SELECT nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
+                                        ORDER BY nombre_anime ASC");
+
+                                        $sentencia1->bind_param('ii',$id_lista1,$id);
+
+                                        $sentencia1->execute();
+
+                                        $resultado1 = $sentencia1->get_result();
+
+                                        $fila1 = $resultado1->fetch_all();
                                         
+                                        $cantidad1 = sizeof($fila1);
+                                        if($cantidad1 > 0){
+                                          $c1=0;
+                                          for($x1 =0; $x1 < $cantidad1; $x1++){
+                                            $c1++;
+                                            $item1 = $fila1[$x1];
                                       ?>
                                       <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row"><?php print $c1 ?></th>
                                         <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <td><?php print $item1[0] ?></td>
+                                        <td>
+                                        <form action="acciones.php" method="POST" enctype="multipart/form-data">
+                                        <div class="btn-group">
+                                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Acciones
+                                          </button>
+                                          <div class="dropdown-menu">
+                                            <ul>
+                                              <li class="mb-1"> <button name="submit" value="1" type="submit" class="btn btn-outline-danger btn-sm">Pendiente</button></li>
+                                              <li class="mb-1"> <button name="submit" value="2" type="submit" class="btn btn-outline-warning btn-sm">Viendo</button></li>
+                                              <li class="mb-1"> <button name="submit" value="3" type="submit" class="btn btn-outline-success btn-sm">Visto</button></li>
+                                              <li class="mb-1"> <button name="submit" value="3" type="submit" class="btn btn-outline-success btn-sm">Eliminar</button></li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        </form>
+                                        </td>
                                       </tr>
-                                      <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                      </tr>
+                                            <?php }}else{
+                                              ?>
+
+                                              <tr>
+                                                <td colspan="6">NO HAY REGISTROS</td>
+                                              </tr>
+                            
+                                                <?php }
+                                                $sentencia1->close();
+                                                $conexion->close();
+                                                ?>
                                     </tbody>
                                   </table>
                                   <!--table-->
