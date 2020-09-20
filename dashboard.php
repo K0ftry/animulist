@@ -86,7 +86,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                         $id = $_SESSION['usuario_info']['id'];
                                         $id_lista1 = 1;
 
-                                        $sentencia1 = $conexion->prepare("SELECT nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
+                                        $sentencia1 = $conexion->prepare("SELECT id,nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
                                         ORDER BY nombre_anime ASC");
 
                                         $sentencia1->bind_param('ii',$id_lista1,$id);
@@ -106,10 +106,12 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                       ?>
                                       <tr>
                                         <th class="p-0" scope="row"><?php print $c1 ?></th>
-                                        <td class="p-0">Mark</td>
-                                        <td class="p-0"><?php print $item1[0] ?></td>
+                                        <td class="p-0"><img style="height: 50px; width: 50px" src="<?php print $item1[2] ?>" alt=""></td>
+                                        <td class="p-0"><?php print $item1[1] ?></td>
                                         <td class="p-0">
                                         <form action="acciones.php" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="id" value="<?php print $item1[0] ?>">
+
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Acciones
@@ -170,7 +172,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                         $id = $_SESSION['usuario_info']['id'];
                                         $id_lista2 = 2;
 
-                                        $sentencia2 = $conexion->prepare("SELECT nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
+                                        $sentencia2 = $conexion->prepare("SELECT id,nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
                                         ORDER BY nombre_anime ASC");
 
                                         $sentencia2->bind_param('ii',$id_lista2,$id);
@@ -190,10 +192,12 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                       ?>
                                       <tr>
                                         <th class="p-0" scope="row"><?php print $c2 ?></th>
-                                        <td class="p-0">Mark</td>
-                                        <td class="p-0"><?php print $item2[0] ?></td>
+                                        <td class="p-0"><img style="height: 50px; width: 50px" src="<?php print $item2[2] ?>" alt=""></td>
+                                        <td class="p-0"><?php print $item2[1] ?></td>
                                         <td class="p-0">
                                         <form action="acciones.php" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="id" value="<?php print $item2[0] ?>">
+
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Acciones
@@ -254,7 +258,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                         $id = $_SESSION['usuario_info']['id'];
                                         $id_lista3 = 3;
 
-                                        $sentencia3 = $conexion->prepare("SELECT nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
+                                        $sentencia3 = $conexion->prepare("SELECT id,nombre_anime,imagen_url FROM animes WHERE lista_id = ? AND usuario_id = ?
                                         ORDER BY nombre_anime ASC");
 
                                         $sentencia3->bind_param('ii',$id_lista3,$id);
@@ -274,10 +278,12 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                       ?>
                                       <tr>
                                         <th class="p-0" scope="row"><?php print $c3 ?></th>
-                                        <td class="p-0">Mark</td>
-                                        <td class="p-0"><?php print $item3[0] ?></td>
+                                        <td class="p-0"><img style="height: 50px; width: 50px" src="<?php print $item3[2] ?>" alt=""></td>
+                                        <td class="p-0"><?php print $item3[1] ?></td>
                                         <td class="p-0">
                                         <form action="acciones.php" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="id" value="<?php print $item3[0] ?>">
+
                                         <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Acciones
