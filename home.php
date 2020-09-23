@@ -15,8 +15,9 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="shortcut icon" href="img/icon.png" />
 
-    <title>AnimuList</title>
+    <title>KofeLab</title>
   </head>
   <body>
     <!--******Aquí inicia el código******-->
@@ -24,27 +25,33 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
          <!--Inicia el navbar-->
         <div class="row">
             <div class="col">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">AnimuList</a>
+                <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6DEB59;">
+                    <a class="navbar-brand text-white font-weight-bold" href="#" style="text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">KofeLab</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="background-color: #A7F55D;">
                       <ul class="navbar-nav">
-                        <li class="nav-item active"> 
-                          <a class="nav-link" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
-                        </li>
-                        <li>
-                          <a href="salir.php">Desconectar</a>
-                        </li>
-                        <li>
-                          <a class="btn btn-primary" href="lista.php">Mi lista</a>
-                        </li>
+                        
                         <li>
                           <form action="resultado_loged.php" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
                             <input name="nombre_anime" class="form-control mr-sm-2" type="search" placeholder="Buscar anime" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                            <div>
+                              <button class="btn btn-outline-dark my-2 my-sm-0 ml-1" type="submit">Buscar</button>
+                              <a class="btn btn-primary" href="lista.php">Mi lista</a>
+                            </div>
+                            
+                            
                           </form>
+                            
+                        </li>
+                        
+                        <li class="nav-item active"> 
+                          <a class="nav-link" style="display: inline-block;" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
+                          <a class="pl-5" href="salir.php">Desconectar</a>
+                        </li>
+                        <li>
+                          
                         </li>
                       </ul>
                     </div>
@@ -54,27 +61,73 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                   <!--Termina el navbar-->
                   <div class="row">
                       <div class="col">
-                          <h2 class="text-center">Waifu del día</h2>
+                          <h2 class="text-center">Bienvenido onii-chan</h2>
                       </div>
                   </div>
-                  <!--Card-->
+                  
                   <div class="row">
-                      <div class="col">
-                        <div class="card">
-                            <div class="card-header">
-                              User
-                            </div>
-                            <img src="img/aqua.png" alt="">
-                            <div class="card-body">
-                              <blockquote class="blockquote mb-0">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                              </blockquote>
-                            </div>
-                          </div>
-                      </div>
+                    <div class="col-3">
+                       <div class="spinner-border text-primary" role="status">
+                          <span class="sr-only">Loading...</span>
+                       </div>
+                    </div>
+                    <div class="col-3">
+                    <div class="spinner-border text-warning" role="status">
+                          <span class="sr-only">Loading...</span>
+                       </div>
+                    </div>
+                    <div class="col-3">
+                    <div class="spinner-border text-danger" role="status">
+                          <span class="sr-only">Loading...</span>
+                       </div>
+                    </div>
+                    <div class="col-3">
+                    <div class="spinner-border text-success" role="status">
+                          <span class="sr-only">Loading...</span>
+                       </div>
+                    </div>
                   </div>
-                  <!--Card--> 
+
+                  <!-- Carousel -->
+                  <div id="carouselExampleSlidesOnly" class="carousel slide mt-2 mb-2" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" style="height: auto; width: 100%">
+                          <img src="img/rem.png" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item" style="height: auto; width: 100%">
+                        <img src="img/megumin.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item" style="height: auto; width: 100%">
+                        <img src="img/alice.jpg" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Carousel -->
+                  
+                  <div class="row">
+                    <div class="col-3">
+                       <div class="spinner-grow text-primary" role="status">
+                          <span class="sr-only">Loading...</span>
+                       </div>
+                    </div>
+                    <div class="col-3">
+                    <div class="spinner-grow text-warning" role="status">
+                          <span class="sr-only">Loading...</span>
+                       </div>
+                    </div>
+                    <div class="col-3">
+                    <div class="spinner-grow text-danger" role="status">
+                          <span class="sr-only">Loading...</span>
+                       </div>
+                    </div>
+                    <div class="col-3">
+                    <div class="spinner-grow text-success" role="status">
+                          <span class="sr-only">Loading...</span>
+                       </div>
+                    </div>
+                  </div>
+
+                  
     </div>
     <!--******Aquí termina el código******-->
     <!-- Optional JavaScript -->
