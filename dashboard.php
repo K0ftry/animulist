@@ -20,25 +20,25 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
 
     <title>KofeLab</title>
   </head>
-  <body>
+  <body style="background-color: #000033;">
     <!--******Aquí inicia el código******-->
     <div class="container">
          <!--Inicia el navbar-->
-        <div class="row">
-            <div class="col">
-                <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6DEB59;">
+         <div class="row">
+            <div class="col pl-0 pr-0">
+                <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000066;">
                     <a class="navbar-brand text-white font-weight-bold" href="home.php" style="text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">KofeLab</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="background-color: #A7F55D;">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="background-color: #000033;">
                       <ul class="navbar-nav">
                         
                         <li>
                           <form action="resultado_loged.php" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
                             <input name="nombre_anime" class="form-control mr-sm-2" type="search" placeholder="Buscar anime" aria-label="Search">
                             <div>
-                              <button class="btn btn-outline-dark my-2 my-sm-0 ml-1" type="submit">Buscar</button>
+                              <button class="btn btn-outline-light my-2 my-sm-0 ml-1" type="submit">Buscar</button>
                               <a class="btn btn-primary" href="lista.php">Mi lista</a>
                             </div>
                             
@@ -48,7 +48,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                         </li>
                         
                         <li class="nav-item active"> 
-                          <a class="nav-link" style="display: inline-block;" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
+                          <a class="nav-link text-white" style="display: inline-block;" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
                           <a class="pl-5" href="salir.php">Desconectar</a>
                         </li>
                         <li>
@@ -61,16 +61,16 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
             </div>
                   <!--Termina el navbar-->
                   <div class="row">
-                      <div class="col">
-                          <h2 class="text-center">Mis listas</h2>
+                      <div class="col pl-0 pr-0">
+                          <h2 class="text-center text-white">Mis listas</h2>
                       </div>
                   </div>
                   <!--Collapse-->
                   <div class="row">
-                      <div class="col">
+                      <div class="col pl-0 pr-0">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
-                              <div class="card-header" style="background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);" id="headingOne">
+                              <div class="card-header" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);" id="headingThree">
                                 <h2 class="mb-0">
                                   <button class="btn btn-link btn-block text-left text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     Animes pendientes
@@ -79,7 +79,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                               </div>
                           
                               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body" style="padding-bottom: 100px;">
+                                <div class="card-body  pt-0 pl-0 pr-0 bg-dark" style="padding-bottom: 100px;">
                                   <!--table-->
                                   <table class="table table-striped table-dark">
                                     <thead>
@@ -156,7 +156,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                               </div>
                             </div>
                             <div class="card">
-                              <div class="card-header" style="background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);" id="headingTwo" style="z-index: 0;">
+                              <div class="card-header" style="background: linear-gradient(90deg, rgba(180,142,58,1) 32%, rgba(253,232,29,1) 79%, rgba(232,252,69,1) 100%);">
                                 <h2 class="mb-0">
                                   <button class="btn btn-link btn-block text-left collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Viendo actualmente
@@ -165,7 +165,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                               </div>
                               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                 
-                                <div class="card-body" style="padding-bottom: 100px;">
+                                <div class="card-body pt-0 pl-0 pr-0 bg-dark" style="padding-bottom: 100px;">
                                   <!--table-->
                                   <table class="table table-striped table-dark">
                                     <thead>
@@ -243,7 +243,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                               </div>
                             </div>
                             <div class="card">
-                              <div class="card-header" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);" id="headingThree">
+                              <div class="card-header" style="background: linear-gradient(90deg, rgba(0,36,12,1) 4%, rgba(9,121,44,1) 58%, rgba(0,212,255,1) 100%);">
                                 <h2 class="mb-0">
                                   <button class="btn btn-link btn-block text-left collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     Animes vistos
@@ -251,7 +251,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                                 </h2>
                               </div>
                               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                              <div class="card-body" style="padding-bottom: 100px;">
+                              <div class="card-body pt-0 pl-0 pr-0 bg-dark" style="padding-bottom: 100px;">
                                   <!--table-->
                                   <table class="table table-striped table-dark">
                                     <thead>

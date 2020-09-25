@@ -19,25 +19,25 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
 
     <title>KofeLab</title>
   </head>
-  <body>
+  <body style="background-color: #000033;">
     <!--******Aquí inicia el código******-->
     <div class="container">
          <!--Inicia el navbar-->
-        <div class="row">
-            <div class="col">
-                <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6DEB59;">
-                    <a class="navbar-brand text-white font-weight-bold" href="#" style="text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">KofeLab</a>
+         <div class="row">
+            <div class="col pl-0 pr-0">
+                <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000066;">
+                    <a class="navbar-brand text-white font-weight-bold" href="home.php" style="text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">KofeLab</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="background-color: #A7F55D;">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="background-color: #000033;">
                       <ul class="navbar-nav">
                         
                         <li>
                           <form action="resultado_loged.php" method="POST" enctype="multipart/form-data" class="form-inline my-2 my-lg-0">
                             <input name="nombre_anime" class="form-control mr-sm-2" type="search" placeholder="Buscar anime" aria-label="Search">
                             <div>
-                              <button class="btn btn-outline-dark my-2 my-sm-0 ml-1" type="submit">Buscar</button>
+                              <button class="btn btn-outline-light my-2 my-sm-0 ml-1" type="submit">Buscar</button>
                               <a class="btn btn-primary" href="lista.php">Mi lista</a>
                             </div>
                             
@@ -47,7 +47,7 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                         </li>
                         
                         <li class="nav-item active"> 
-                          <a class="nav-link" style="display: inline-block;" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
+                          <a class="nav-link text-white" style="display: inline-block;" href="#"><?php print $_SESSION['usuario_info']['alias']." - link establecido"; ?><span class="sr-only">(current)</span></a>
                           <a class="pl-5" href="salir.php">Desconectar</a>
                         </li>
                         <li>
@@ -60,8 +60,8 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
             </div>
                   <!--Termina el navbar-->
                   <div class="row">
-                      <div class="col">
-                          <h2 class="text-center">Bienvenido onii-chan</h2>
+                      <div class="col" style="background-color: #000033;">
+                          <h2 class="text-center text-white">Bienvenido onii-chan</h2>
                       </div>
                   </div>
                   
@@ -91,13 +91,13 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                   <!-- Carousel -->
                   <div id="carouselExampleSlidesOnly" class="carousel slide mt-2 mb-2" data-ride="carousel">
                     <div class="carousel-inner">
-                      <div class="carousel-item active" style="height: auto; width: 100%">
+                      <div class="carousel-item active" style="height: 200px; width: 100%">
                           <img src="img/rem.png" class="d-block w-100" alt="...">
                       </div>
-                      <div class="carousel-item" style="height: auto; width: 100%">
+                      <div class="carousel-item" style="height: 200px; width: 100%">
                         <img src="img/megumin.jpg" class="d-block w-100" alt="...">
                       </div>
-                      <div class="carousel-item" style="height: auto; width: 100%">
+                      <div class="carousel-item" style="height: 200px; width: 100%">
                         <img src="img/alice.jpg" class="d-block w-100" alt="...">
                       </div>
                     </div>
@@ -125,6 +125,13 @@ if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']))
                           <span class="sr-only">Loading...</span>
                        </div>
                     </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <img src="img/yui.png" alt="" class="d-block w-100">
+                    </div>
+                    
                   </div>
 
                   
